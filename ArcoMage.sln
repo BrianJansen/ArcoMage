@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1169
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArcoMage", "ArcoMage\ArcoMage.csproj", "{D85C1FB3-3209-4581-AD35-17FF8860F443}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D85C1FB3-3209-4581-AD35-17FF8860F443}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D85C1FB3-3209-4581-AD35-17FF8860F443}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D85C1FB3-3209-4581-AD35-17FF8860F443}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D85C1FB3-3209-4581-AD35-17FF8860F443}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {11184EAF-7C0B-42A7-BF9D-8153F1471E04}
+	EndGlobalSection
+EndGlobal

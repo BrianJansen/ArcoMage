@@ -1,0 +1,137 @@
+﻿<Window x:Class="ArcoMage.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ArcoMage"
+        xmlns:converters="clr-namespace:ArcoMage.Converters"
+        mc:Ignorable="d"
+        WindowState="Maximized"
+        WindowStyle="None"
+        Title="MainWindow" Height="1080" Width="1920">
+    <Window.Resources>
+        <converters:TowerHeightConverter x:Key="towerHeightConverter"/>
+        <converters:WallHeightConverter x:Key="wallHeightConverter"/>
+    </Window.Resources>
+    <Grid>
+        
+        <Grid x:Name="GameGrid">
+            <Grid x:Name="PlayArea" VerticalAlignment="Top" Height="780" >
+                <Image Source="pack://application:,,,/ArcoMage;component/Images/MagicalBackground.jpg" Stretch="Fill"/>
+            </Grid>
+            <Grid x:Name="P1Resources" HorizontalAlignment="Left" VerticalAlignment="Top" Height="780" Width="300">
+                <Image Source="pack://application:,,,/ArcoMage;component/Images/ResourcesBackdrop.jpg" Stretch="Fill"/>
+                <Grid x:Name="P1BrickLabel" Height="200" Width="200" Margin="0,0,0,500">
+                    <Image Source="pack://application:,,,/ArcoMage;component/Images/BrickIcon.png" Stretch="Fill" />
+                    <TextBlock x:Name="P1CurrentBrickCount" Text="{Binding Player1.BrickQuantity, UpdateSourceTrigger=PropertyChanged}" FontSize="82" FontWeight="Bold" Foreground="YellowGreen" Height="100" Width="150" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                    <TextBlock x:Name="P1CurrentBrickProduction" Text="{Binding Player1.BrickLevel, UpdateSourceTrigger=PropertyChanged}" FontSize="32" FontWeight="Bold" Foreground="Aqua" Height="50" Width="50" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
+                </Grid>
+                <Grid x:Name="P1MagicLabel" Height="200" Width="200" Margin="0,0,0,0">
+                    <Image Source="pack://application:,,,/ArcoMage;component/Images/MagicIcon.png" Stretch="Fill"/>
+                    <TextBlock x:Name="P1CurrentMagicCount" Text="{Binding Player1.MagicQuantity, UpdateSourceTrigger=PropertyChanged}" FontSize="82" FontWeight="Bold" Foreground="YellowGreen" Height="100" Width="150" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                    <TextBlock x:Name="P1CurrentMagicProduction" Text="{Binding Player1.MagicLevel, UpdateSourceTrigger=PropertyChanged}" FontSize="32" FontWeight="Bold" Foreground="Aqua" Height="50" Width="50" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
+                </Grid>
+                <Grid x:Name="P1DungeonLabel" Height="200" Width="200" Margin="0,0,0,-500">
+                    <Image Source="pack://application:,,,/ArcoMage;component/Images/DungeonIcon.png" Stretch="Fill"/>
+                    <TextBlock x:Name="P1CurrentDungeonCount" Text="{Binding Player1.DungeonQuantity, UpdateSourceTrigger=PropertyChanged}" FontSize="82" FontWeight="Bold" Foreground="YellowGreen" Height="100" Width="150" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                    <TextBlock x:Name="P1CurrentDungeonProduction" Text="{Binding Player1.DungeonLevel, UpdateSourceTrigger=PropertyChanged}" FontSize="32" FontWeight="Bold" Foreground="Aqua" Height="50" Width="50" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
+                </Grid>
+                
+            </Grid>
+            <Grid x:Name="P2Resources" HorizontalAlignment="Right" VerticalAlignment="Top" Height="780" Width="300">
+                <Image Source="pack://application:,,,/ArcoMage;component/Images/ResourcesBackdrop.jpg" Stretch="Fill"/>
+                <Grid x:Name="P2BrickLabel" Height="200" Width="200" Margin="0,0,0,500">
+                    <Image Source="pack://application:,,,/ArcoMage;component/Images/BrickIcon.png" Stretch="Fill" />
+                    <TextBlock x:Name="P2CurrentBrickCount" Text="{Binding Player2.BrickQuantity, UpdateSourceTrigger=PropertyChanged}" FontSize="82" FontWeight="Bold" Foreground="YellowGreen" Height="100" Width="150" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                    <TextBlock x:Name="P2CurrentBrickProduction" Text="{Binding Player2.BrickLevel, UpdateSourceTrigger=PropertyChanged}" FontSize="32" FontWeight="Bold" Foreground="Aqua" Height="50" Width="50" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
+                </Grid>
+                <Grid x:Name="P2MagicLabel" Height="200" Width="200" Margin="0,0,0,0">
+                    <Image Source="pack://application:,,,/ArcoMage;component/Images/MagicIcon.png" Stretch="Fill"/>
+                    <TextBlock x:Name="P2CurrentMagicCount" Text="{Binding Player2.MagicQuantity, UpdateSourceTrigger=PropertyChanged}" FontSize="82" FontWeight="Bold" Foreground="YellowGreen" Height="100" Width="150" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                    <TextBlock x:Name="P2CurrentMagicProduction" Text="{Binding Player2.MagicLevel, UpdateSourceTrigger=PropertyChanged}" FontSize="32" FontWeight="Bold" Foreground="Aqua" Height="50" Width="50" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
+                </Grid>
+                <Grid x:Name="P2DungeonLabel" Height="200" Width="200" Margin="0,0,0,-500">
+                    <Image Source="pack://application:,,,/ArcoMage;component/Images/DungeonIcon.png" Stretch="Fill"/>
+                    <TextBlock x:Name="P2CurrentDungeonCount" Text="{Binding Player2.DungeonQuantity, UpdateSourceTrigger=PropertyChanged}" FontSize="82" FontWeight="Bold" Foreground="YellowGreen" Height="100" Width="150" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                    <TextBlock x:Name="P2CurrentDungeonProduction" Text="{Binding Player2.DungeonLevel, UpdateSourceTrigger=PropertyChanged}" FontSize="32" FontWeight="Bold" Foreground="Aqua" Height="50" Width="50" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
+                </Grid>
+            </Grid>
+            <StackPanel HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="500,300">
+                <Image Source="pack://application:,,,/ArcoMage;component/Images/WallPic.png" Stretch="None" Height="{Binding Player1.WallLevel, Converter={StaticResource wallHeightConverter}}" Width="30"  />
+                <TextBlock Background="White" Height="30" Width="30" Margin="0,-40,0,0" Text="{Binding Player1.WallLevel}" FontWeight="Bold" TextAlignment="Center" FontSize="16"/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="400,0,0,300">
+                <Image Source="pack://application:,,,/ArcoMage;component/Images/P1TowerTop.png" Stretch="Fill" Height="60" Width="60" Margin="0,0,0,-6" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                <Image Source="pack://application:,,,/ArcoMage;component/Images/TowerPic.jpg" Stretch="None" Height="{Binding Player1.TowerLevel, Converter={StaticResource towerHeightConverter}}" Width="60" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                <TextBlock Background="White" Height="30" Width="50" Margin="0,-40,0,0" Text="{Binding Player1.TowerLevel}" FontWeight="Bold" TextAlignment="Center" FontSize="16"/>
+            </StackPanel>
+            <StackPanel Margin="500,300" HorizontalAlignment="Right" VerticalAlignment="Bottom" >
+                <Image Source="pack://application:,,,/ArcoMage;component/Images/WallPic.png" Stretch="None" Height="{Binding Player2.WallLevel, Converter={StaticResource wallHeightConverter}}" Width="30"  />
+                <TextBlock Background="White" Height="30" Width="30" Margin="0,-40,0,0" Text="{Binding Player2.WallLevel}" FontWeight="Bold" TextAlignment="Center" FontSize="16"/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,400,300">
+                <Image Source="pack://application:,,,/ArcoMage;component/Images/P2TowerTop.png" Stretch="Fill" Height="60" Width="60" Margin="0,0,0,-6" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                <Image Source="pack://application:,,,/ArcoMage;component/Images/TowerPic.jpg" Stretch="None" Height="{Binding Player2.TowerLevel, Converter={StaticResource towerHeightConverter}}" Width="60" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                <TextBlock Background="White" Height="30" Width="50" Margin="0,-40,0,0" Text="{Binding Player2.TowerLevel}" FontWeight="Bold" TextAlignment="Center" FontSize="16"/>
+            </StackPanel>
+            <Button Height="150" Width="150" Command="{Binding TestButton1}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,400"/>
+            <Button Height="150" Width="150" Command="{Binding TestButton2}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Button Height="150" Width="150" Command="{Binding TestButton3}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,-400"/>
+            <Grid x:Name="CardTray" VerticalAlignment="Bottom" Height="300">
+                <Image Source="pack://application:,,,/ArcoMage;component/Images/CardTray.jpg" Stretch="Fill"/>
+                <ItemsControl ItemsSource="{Binding Player1.Hand, UpdateSourceTrigger=PropertyChanged}" Visibility="{Binding Player1Visibility}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel x:Name="Cards" HorizontalAlignment="Left" Orientation="Horizontal"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Button Height="250" Width="200" Margin="100,0,0,0" CommandParameter="{Binding}" Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}, Path=DataContext.CardSelected}">
+                                <Grid>
+                                    <Image Source="pack://application:,,,/ArcoMage;component/Images/CardBackground.jpg" Stretch="Fill"/>
+                                    <TextBlock Background="Beige" Text="{Binding CostAmount, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Right" VerticalAlignment="Top" Height="30" Width="30" FontWeight="Bold" FontSize="22" Foreground="{Binding CostColor, UpdateSourceTrigger=PropertyChanged}"/>
+                                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Height="200" Width="150">
+                                        <TextBlock Height="20" FontWeight="Bold" FontSize="16" Foreground="Yellow" TextAlignment="Center" Text="{Binding CardName, UpdateSourceTrigger=PropertyChanged}" Margin="15"/>
+                                        <Image Source="{Binding Image, UpdateSourceTrigger=PropertyChanged}" Stretch="Fill" Height="100" Width="140" Margin="5,0,5,0"/>
+                                        <TextBlock Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" Foreground="Yellow" Margin="5"/>
+                                    </StackPanel>
+                                </Grid>
+                            </Button>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+                <ItemsControl ItemsSource="{Binding Player2.Hand, UpdateSourceTrigger=PropertyChanged}" Visibility="{Binding Player2Visibility}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel x:Name="Cards" HorizontalAlignment="Left" Orientation="Horizontal"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Button Height="250" Width="200" Margin="100,0,0,0" CommandParameter="{Binding}" Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}, Path=DataContext.CardSelected}">
+                                <Grid>
+                                    <Image Source="pack://application:,,,/ArcoMage;component/Images/CardBackground2.jpg" Stretch="Fill"/>
+                                    <TextBlock Background="Beige" Text="{Binding CostAmount, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Right" VerticalAlignment="Top" Height="30" Width="30" FontWeight="Bold" FontSize="22" Foreground="{Binding CostColor, UpdateSourceTrigger=PropertyChanged}"/>
+                                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Height="200" Width="150">
+                                        <TextBlock Height="20" FontWeight="Bold" FontSize="16" Foreground="Yellow" TextAlignment="Center" Text="{Binding CardName, UpdateSourceTrigger=PropertyChanged}" Margin="15"/>
+                                        <Image Source="{Binding Image, UpdateSourceTrigger=PropertyChanged}" Stretch="Fill" Height="100" Width="140" Margin="5,0,5,0"/>
+                                        <TextBlock Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" Foreground="Yellow" Margin="15"/>
+                                    </StackPanel>
+                                </Grid>
+                            </Button>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+
+            </Grid>
+        </Grid>
+        
+        
+        
+        
+        <Grid x:Name="MainMenu" Visibility="Collapsed">
+            <TextBlock Text="Hello" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Grid>
+    </Grid>
+</Window>
