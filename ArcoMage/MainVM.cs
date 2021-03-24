@@ -1,4 +1,5 @@
-﻿using Prism.Commands;
+﻿using ArcoMage.Models;
+using Prism.Commands;
 using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,8 @@ namespace ArcoMage
         GameManager gm;
         Visibility player1Visibility;
         Visibility player2Visibility = Visibility.Collapsed;
+        Visibility victoryScreenVisibility = Visibility.Collapsed;
+        string victoryText;
         public MainVM(GameManager gm)
         {
             this.gm = gm;
@@ -27,14 +30,16 @@ namespace ArcoMage
         public DelegateCommand TestButton1 { get; set; }
         public DelegateCommand TestButton2 { get; set; }
         public DelegateCommand TestButton3 { get; set; }
-
         public DelegateCommand<Card> CardSelected { get; set; }
 
         public Player Player1 { get { return gm.Player1; } }
         public Player Player2 { get { return gm.Player2; } }
+        
+        public string VictoryText { get { return victoryText; } set { SetProperty(ref victoryText, value); } }
 
         public Visibility Player1Visibility { get { return player1Visibility; } set { SetProperty(ref player1Visibility, value); } }
         public Visibility Player2Visibility { get { return player2Visibility; } set { SetProperty(ref player2Visibility, value); } }
+        public Visibility VictoryScreenVisibility { get { return victoryScreenVisibility; } set { SetProperty(ref victoryScreenVisibility, value); } }
 
         void OnCardSelected(Card selectedCard)
         {
@@ -58,6 +63,7 @@ namespace ArcoMage
                     {
                         CurrentPlayer.BrickQuantity -= selectedCard.CostAmount;
                         selectedCard.RunEffect(CurrentPlayer, IdlePlayer);
+                        CheckVictoryConditions();
                         gm.DrawNewCard(selectedCard);
                         SwitchCurrentPlayer();
                     }
@@ -71,6 +77,7 @@ namespace ArcoMage
                     {
                         CurrentPlayer.MagicQuantity -= selectedCard.CostAmount;
                         selectedCard.RunEffect(CurrentPlayer, IdlePlayer);
+                        CheckVictoryConditions();
                         gm.DrawNewCard(selectedCard);
                         SwitchCurrentPlayer();
                     }
@@ -84,6 +91,7 @@ namespace ArcoMage
                     {
                         CurrentPlayer.DungeonQuantity -= selectedCard.CostAmount;
                         selectedCard.RunEffect(CurrentPlayer, IdlePlayer);
+                        CheckVictoryConditions();
                         gm.DrawNewCard(selectedCard);
                         SwitchCurrentPlayer();
                     }
@@ -110,6 +118,21 @@ namespace ArcoMage
                 Player1Visibility = Visibility.Collapsed;
                 Player2Visibility = Visibility.Visible;
                 gm.GenerateResources(Player2);
+            }
+        }
+
+
+        void CheckVictoryConditions()
+        {
+            if(Player1.TowerLevel == 0)
+            {
+                VictoryScreenVisibility = Visibility.Visible;
+                VictoryText = "Player 2 is Victorious!";
+            }
+            if(Player2.TowerLevel == 0)
+            {
+                VictoryScreenVisibility = Visibility.Visible;
+                VictoryText = "Player 1 is Victorious!";
             }
         }
 

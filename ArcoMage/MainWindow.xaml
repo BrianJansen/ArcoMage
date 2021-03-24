@@ -13,7 +13,7 @@
         <converters:TowerHeightConverter x:Key="towerHeightConverter"/>
         <converters:WallHeightConverter x:Key="wallHeightConverter"/>
     </Window.Resources>
-    <Grid>
+    <Grid KeyDown="KeyPressed">
         
         <Grid x:Name="GameGrid">
             <Grid x:Name="PlayArea" VerticalAlignment="Top" Height="780" >
@@ -126,9 +126,10 @@
 
             </Grid>
         </Grid>
-        
-        
-        
+
+        <Grid x:Name="VictoryScreen" Visibility="{Binding VictoryScreenVisibility}">
+            <TextBlock Text="{Binding VictoryText}" FontSize="80" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Grid>
         
         <Grid x:Name="MainMenu" Visibility="Collapsed">
             <TextBlock Text="Hello" HorizontalAlignment="Center" VerticalAlignment="Center"/>

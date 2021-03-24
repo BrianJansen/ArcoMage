@@ -94,7 +94,7 @@
     <Compile Include="Converters\TowerHeightConverter.cs" />
     <Compile Include="Converters\WallHeightConverter.cs" />
     <Compile Include="DataAccess.cs" />
-    <Compile Include="DBCard.cs" />
+    <Compile Include="Models\DBCard.cs" />
     <Compile Include="DBHelper.cs" />
     <Compile Include="Enums.cs" />
     <Page Include="MainWindow.xaml">
@@ -105,7 +105,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Card.cs" />
+    <Compile Include="Models\Card.cs" />
     <Compile Include="GameManager.cs" />
     <Compile Include="MainVM.cs" />
     <Compile Include="MainWindow.xaml.cs">
@@ -114,7 +114,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Player.cs" />
+    <Compile Include="Models\Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -156,7 +156,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Images\CardPics\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\CardTray.jpg" />

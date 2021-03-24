@@ -1,0 +1,6 @@
+﻿1. Computer AI
+2. Animations
+3. Make UI pretty
+4. Main Menu, game management
+5. Customizable cards/decks
+6. Add more cards

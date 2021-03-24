@@ -1,4 +1,5 @@
-﻿using Prism.Mvvm;
+﻿using ArcoMage.Models;
+using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -53,8 +54,8 @@ namespace ArcoMage
             Player1 = new Player();
             Player1.Discard = new List<Card>();
             Player1.Deck = InitializeCards();
-            Player1.TowerLevel = 50;
-            Player1.WallLevel = 50;
+            Player1.TowerLevel = 5;
+            Player1.WallLevel = 5;
             Player1.BrickLevel = 3;
             Player1.MagicLevel = 2;
             Player1.DungeonLevel = 1;

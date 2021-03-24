@@ -26,5 +26,13 @@ namespace ArcoMage
             MainVM mainVm = new MainVM(gm);
             this.DataContext = mainVm;
         }
+
+        private void KeyPressed(object sender, KeyEventArgs e)
+        {
+            if(e.Key == Key.Escape)
+            {
+                Application.Current.Shutdown();
+            }
+        }
     }
 }
